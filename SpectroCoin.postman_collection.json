@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "2f824f66-a86b-42fd-a5e5-48008e44c431",
+		"name": "SpectroCoin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://spectrocoin.com/scapi/ticker/usd/btc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"pm.test(\"Currency From field is USD\", function () {",
+							"    pm.expect(pm.response.json().currencyFrom).to.eql('USD')",
+							"});",
+							"pm.test(\"Currency To field is BTC\", function () {",
+							"    pm.expect(pm.response.json().currencyTo).to.eql('BTC')",
+							"});",
+							"pm.test(\"Currency from Scale property is number\", function () {",
+							"    pm.expect(pm.response.json().currencyFromScale).to.be.a('number')",
+							"});",
+							"pm.test(\"Currency to Scale property is number\", function () {",
+							"    pm.expect(pm.response.json().currencyToScale).to.be.a('number')",
+							"});",
+							"pm.test(\"Friendly Last property is a string\", function () {",
+							"    pm.expect(pm.response.json().friendlyLast).to.be.a('string')",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://spectrocoin.com/scapi/ticker/usd/btc"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
